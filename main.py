@@ -1,6 +1,7 @@
 import time
 import re
 import json
+import os
 import hashlib
 import hmac
 import base64
@@ -210,7 +211,9 @@ def login(username, password):
 
 def main():
     if check_login_need():
-        login("学号", "密码")
+        user = os.environ["ZJU_USER"]
+        passwd = os.environ["ZJU_PASS"]
+        login(user, passwd)
     else:
         print("[INFO] WLAN不需要登录")
 
